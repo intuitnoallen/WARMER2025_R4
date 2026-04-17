@@ -36,7 +36,7 @@ void ui_SplashWigg_screen_init(void)
     lv_obj_set_x(ui_LabelWiggVersion, 0);
     lv_obj_set_y(ui_LabelWiggVersion, 95);
     lv_obj_set_align(ui_LabelWiggVersion, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_LabelWiggVersion, "v4.2.0-R4");
+    lv_label_set_text(ui_LabelWiggVersion, "v4.2.1-R4");
     lv_obj_set_style_text_color(ui_LabelWiggVersion, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_LabelWiggVersion, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_LabelWiggVersion, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
