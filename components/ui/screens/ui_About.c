@@ -35,7 +35,7 @@ void ui_About_screen_init(void)
     lv_obj_set_y(ui_LabelFWversion, 32);
     lv_obj_set_align(ui_LabelFWversion, LV_ALIGN_LEFT_MID);
 
-    lv_label_set_text(ui_LabelFWversion, "FW:   v4.1.6");
+    lv_label_set_text(ui_LabelFWversion, "FW:   v4.1.7");
     lv_obj_set_style_text_color(ui_LabelFWversion, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_LabelFWversion, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_LabelFWversion, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);

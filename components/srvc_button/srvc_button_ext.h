@@ -66,21 +66,21 @@
                                                                                  \
 /* Button ON                                                                   */\
 X( BTN_BUTTON_ON,           /* GPIO_Inst_ID    */       GPIO_ON_BUTTON          ,\
-                            /* Debounce_Time   1000 */  50                      ,\
+                            /* Debounce_Time   1000 */  5                      ,\
                             /* Hold_Start_Time  */      HOLD_START_TIME         ,\
                             /* Hold_Short_Time  */      HOLD_ON_SHORT_TIME      ,\
                             /* Hold_Long_Time   */      HOLD_ON_LONG_TIME       )\
                                                                                  \
 /* Button UP                                                                   */\
 X( BTN_BUTTON_UP,           /* GPIO_Inst_ID    */       GPIO_UP_BUTTON          ,\
-                            /* Debounce_Time 100   */   50                      ,\
+                            /* Debounce_Time 100   */   5                      ,\
                             /* Hold_Start_Time  */      HOLD_START_TIME         ,\
                             /* Hold_Short_Time  */      HOLD_UP_SHORT_TIME      ,\
                             /* Hold_Long_Time   */      HOLD_UP_LONG_TIME       )\
                                                                                  \
 /* Button Thermometer                                                          */\
 X( BTN_BUTTON_TH,           /* GPIO_Inst_ID    */       GPIO_TH_BUTTON          ,\
-                            /* Debounce_Time 100   */   50                      ,\
+                            /* Debounce_Time 100   */   5                      ,\
                             /* Hold_Start_Time  */      HOLD_START_TIME         ,\
                             /* Hold_Short_Time  */      HOLD_TH_SHORT_TIME      ,\
                             /* Hold_Long_Time   */      HOLD_TH_LONG_TIME       )\                                                                   
