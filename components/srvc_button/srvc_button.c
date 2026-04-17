@@ -86,7 +86,7 @@ struct BTN_obj
 #define BTN_TASK_CPU_ID                 0
 
 /** @brief  Stack size (in bytes) of Button service task */
-#define BTN_TASK_STACK_SIZE             (3*1024)
+#define BTN_TASK_STACK_SIZE             (4*1024)
 
 /** @brief  Priority of Button service task */
 #define BTN_TASK_PRIORITY               (tskIDLE_PRIORITY + 2)
@@ -95,13 +95,13 @@ struct BTN_obj
 #define BTN_BUTTON_PRESSED              BIT0
 
 /** @brief  Cycle in milliseconds of the loop processing buttons while any of them are active */
-#define BTN_PROCESS_CYCLE               50
+#define BTN_PROCESS_CYCLE               25//50
 
 /** @brief  Unused value of button hold time */
 #define BTN_NO_HOLD                     0
 
 /** @brief  Debounce interval in milliseconds when a button is released */
-#define BTN_DEBOUNCE_RELEASE_MS         100
+#define BTN_DEBOUNCE_RELEASE_MS         50//100
 
 /*
 ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

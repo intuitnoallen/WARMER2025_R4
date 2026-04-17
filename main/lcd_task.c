@@ -582,10 +582,11 @@ if (g_b_btn_held)
                 
                 if( curr_scr== ui_TempSetting || curr_scr==ui_Thermometer ||curr_scr== ui_ThermometerReading ||
                     curr_scr== ui_About || curr_scr== ui_BluetoothApp || curr_scr== ui_UserInstruction){ 
-                
-                    app_notify_soft();
+                    // LOGW("ON RELEASED");
+                    
                     act_key = LV_KEY_ENTER; 
-                    vTaskDelay(pdMS_TO_TICKS(20));
+                    vTaskDelay(pdMS_TO_TICKS(30));
+                    app_notify_soft();
                 }
                 else if(curr_scr== ui_Menu){
                     app_notify_soft();
