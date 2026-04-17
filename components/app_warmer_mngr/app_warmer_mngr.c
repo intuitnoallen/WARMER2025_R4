@@ -99,8 +99,8 @@
 #define WARMER_MAINTAIN_MILK_240                (80 * 1000)//(150 * 1000)
 #define WARMER_MAINTAIN_WATER_120               (2 * 1000) //(60 * 1000)
 #define WARMER_MAINTAIN_WATER_240               (80 * 1000)//(150 * 1000)
-#define WARMER_MAINTAIN_FROZEN_120              (300 * 1000)
-#define WARMER_MAINTAIN_FROZEN_240              (300 * 1000)
+#define WARMER_MAINTAIN_FROZEN_120              (30 * 60 * 1000)//(300 * 1000)
+#define WARMER_MAINTAIN_FROZEN_240              (30 * 60 * 1000)//(300 * 1000)
 #define WARMER_MAINTAIN_BABY_FOOD               (300 * 1000)
 
 /** @brief  Heater power (percents) in different use cases */
