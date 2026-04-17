@@ -378,7 +378,7 @@ void updateDoneScreen(uint8_t d){
 	// ToDoneScreen();
 	_ui_screen_change(&ui_Done, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_Done_screen_init);
 	vTaskDelay(pdMS_TO_TICKS(20));
-	lv_obj_scroll_to_view(ui_PanelDone, LV_ANIM_OFF); //Keeping Done
+	lv_obj_scroll_to_view(ui_PanelDone, LV_ANIM_OFF); 
 	lv_group_focus_obj(ui_PanelDone);
 	}else if (d == 5){//Charging Done
 
@@ -390,7 +390,7 @@ void updateDoneScreen(uint8_t d){
 	}else if (d == 6){ //Charging UI 
 	_ui_screen_change(&ui_Done, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_Done_screen_init);
 	vTaskDelay(pdMS_TO_TICKS(20));
-	lv_obj_scroll_to_view(ui_PanelChargeProgress, LV_ANIM_OFF); //Keeping Done
+	lv_obj_scroll_to_view(ui_PanelChargeProgress, LV_ANIM_OFF); 
 	lv_group_focus_obj(ui_PanelChargeProgress);
 	}
 }

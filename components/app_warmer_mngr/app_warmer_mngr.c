@@ -328,6 +328,7 @@ bool isMeasuringTemp=false;
 /** @brief  True when motor rpm is stable at set value */
 bool startHeating=false;
 
+bool last_charging_state = false;
 
 bool isMotor_PID_En = false;
 // static bool g_low_voltage_alert = false;
@@ -1077,8 +1078,27 @@ static void v_WARMER_Update_Inputs (void)
              g_stru_dev.b_charging = BATTERY_NOT_CHARGING;
              TIMER_RESET(g_x_charging_ui_timer);
        }
-         device_data.battery.charging = g_stru_dev.b_charging ? BATTERY_CHARGING : BATTERY_NOT_CHARGING;
+         
+       device_data.battery.charging = g_stru_dev.b_charging ? BATTERY_CHARGING : BATTERY_NOT_CHARGING;
+
+     if(curr_scr!=ui_SplashWigg){   //after splash screen on reboot/power_on
+        //show charging ui immediately (one time only) when plug is connected
+       if(g_stru_dev.b_charging && !last_charging_state && g_stru_sm.enm_curr_state == WARMER_STATE_IDLE && device_stable){
+            // ESP_LOGI("BATTERY", "Charger Connected: Executing one-time action.");
+            ui_post_update(UI_UPDATE_BATTERY_PERCENT,0);
+            vTaskDelay(pdMS_TO_TICKS(20));
+            // TIMER_RESET(x_bat_update_timer);
+
+
+            ui_post_update(UI_UPDATE_DONE_SCR,6);   //charging ui
+            vTaskDelay(pdMS_TO_TICKS(20));
+            TIMER_RESET(g_x_charging_ui_timer);
+       }
+       
+
+       last_charging_state = g_stru_dev.b_charging;
     }
+}
 
 
 
