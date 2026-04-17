@@ -1,0 +1,55 @@
+ko-KR:
+  Manufacture: Made in Singapore
+  DownloadAppScan: 스캔하여앱\n다운로드
+  120ml: 미만180ml
+  240ml: 좀더많아180ml
+  WarmingDone: 가열완료
+  WarmingDone-KeepingProgress: 난방이완료되어 현재\n따뜻함을 유지하고\n있습니다
+  KeepingProgress: 따뜻함을 유지하고 있습니다
+  KeepingDone: 보온끝
+  BatteryCharging: 충전 중
+  BatteryFull: 배터리가완전히충전되었습니다\n충전기를 분리하세요
+  E-3-Message: 가열 시간이 너무 길었습니다. 병이 너무 큰지 확인해 주세요.
+  E-4-Message: 병에 얼음이 너무 많이 들어 있는지 확인해 주세요. 문제가 지속되면 고객 서비스 센터에 문의해 주세요.
+  E-5-Message: 온도 센서에 문제가 있습니다.\n고객 서비스에 문의하세요.
+  E-7-Message: 가발 병의 밀봉 상태를 확인해 주십시오.
+  BatteryLow: 배터리가 부족합니다. 충전해 주세요.
+  E-8-Message: 가열 온도가 \n기준치에 도달했습니다.
+  BreastMilk: 모유
+  WaterFormula: 물/가루 밀크
+  DeFreeze: 해동하는 중
+  BabyFood: 이유식
+  DeOdorize: 생선냄새가사라졌어요
+  'OFF': 닫다
+  Minute: 분
+  Minutes: 분
+  StartWarming: OK 버튼을 길게 눌러\n가열을 시작하세요
+  HeatingMode: 난방 모드
+  TemperatureUnit: 온도 단위
+  BottleSize: 난방 용량
+  KeepWarmTime: 보류 시간
+  Notification: 힌트
+  Language: 언어
+  Bluetooth: 블루투스
+  UserInstructions: 제품 설명서
+  About: 이 기계적인 것에 대해
+  Vibration: 진동 켜기/끄기
+  Ringtone: 소리 끄기 - 볼륨 0
+  Level1: 볼륨 1
+  Level2: 볼륨 2
+  Level3: 볼륨 3
+  Level4: 볼륨 4
+  Level5: 볼륨 5
+  FWUpdateProgress: 프로그램이\n업데이트되고 있습니다
+  FWUpgradeCaution: 병 보온기를 끄거나 블루투스\n연결을 끊지 마십시오.
+  FirmwareUpdated: 프로그램 업데이트 완료
+  Rebooting: 재부팅 중...
+  UpdateFailed: 업데이트 실패
+  PowerOffInfo: 닫힐 때까지 \n계속 누르세요.
+  OKtoConfirm: 확인 버튼을 눌러 확인하세요
+  Celsius: 섭씨
+  Fahrenheit: 화씨
+  MeasuringTemperature: 온도 측정 진행 중
+  MeasuredTemperature: 온도를 \n측정하다
+  AvoidLeaking: 누출을 방지하다
+  LanguageSetReboot: 언어 세트\n재부팅 중...

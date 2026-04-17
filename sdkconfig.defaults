@@ -1,0 +1,66 @@
+#########################
+# System                #
+#########################
+
+# Use ESP32-C3 target
+CONFIG_IDF_TARGET="esp32"
+CONFIG_IDF_TARGET_ESP32=y
+
+# System clock 80 MHz
+CONFIG_ESP32_DEFAULT_CPU_FREQ_240=y
+
+# Use partition table from "partitions_config.csv"
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions_config.csv"
+CONFIG_PARTITION_TABLE_FILENAME="partitions_config.csv"
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+
+# Idle Task stack size
+CONFIG_FREERTOS_IDLE_TASK_STACKSIZE=2048
+
+#########################
+# Bluetooth             #
+#########################
+
+# Enable Bluetooth
+CONFIG_BT_ENABLED=y
+
+# Bluetooth event (callback to application) task stack size
+CONFIG_BT_BTC_TASK_STACK_SIZE=8192
+
+# Bluetooth event (callback to application) task stack size
+CONFIG_BT_BTU_TASK_STACK_SIZE=8192
+
+# Enables BLE 4.2 features, but not 5.0 features
+# CONFIG_BT_BLE_42_FEATURES_SUPPORTED=n
+# CONFIG_BT_BLE_50_FEATURES_SUPPORTED=n
+
+
+
+
+
+
+#########################
+# Power saving          #
+#########################
+
+# Enable support for power management
+# If enabled, this option has run-time overhead (increased interrupt latency,
+# longer time to enter idle state), and it also reduces accuracy of
+# RTOS ticks and timers used for timekeeping.
+CONFIG_PM_ENABLE=y
+
+# FreeRTOS will be able to put the system into light sleep mode when no tasks need to run for a number
+# of ticks. This number can be set using FREERTOS_IDLE_TIME_BEFORE_SLEEP option.
+CONFIG_FREERTOS_USE_TICKLESS_IDLE=y
+
+# FreeRTOS will enter light sleep mode if no tasks need to run for this number of ticks
+CONFIG_FREERTOS_IDLE_TIME_BEFORE_SLEEP=3
+
+# If enabled, about 1.8KB of lightsleep related source code would be in IRAM and chip would sleep
+# longer for 760us at most each time.
+CONFIG_PM_SLP_IRAM_OPT=y
+
+# If enabled, about 260B of RTOS_IDLE related source code would be in IRAM and chip would sleep 
+# longer for 40us at most each time.
+CONFIG_PM_RTOS_IDLE_OPT=y

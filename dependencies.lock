@@ -1,0 +1,21 @@
+dependencies:
+  espressif/cmake_utilities:
+    component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 0.5.3
+  idf:
+    component_hash: null
+    source:
+      type: idf
+    version: 4.4.4
+  lvgl/lvgl:
+    component_hash: 2409fdc84e9766d2a18afd84b051aef3f838348136cdb1c10ac2e8bcdb012bf6
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 9.2.0
+manifest_hash: 556461791a420dbe7e4239238b797a2210447a6b4d8f8fe1bf2c2db34fd4ae3c
+target: esp32
+version: 1.0.0

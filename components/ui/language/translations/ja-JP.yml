@@ -1,0 +1,55 @@
+ja-JP:
+  Manufacture: Made in Singapore
+  DownloadAppScan: スキャンし\nてアプリをダウンロード
+  120ml: 未満180ml
+  240ml: より多い180ml
+  WarmingDone: 加熱完了
+  WarmingDone-KeepingProgress: 暖房完了\n現在保温中です。
+  KeepingProgress: 現在保温中です
+  KeepingDone: 保温終了
+  BatteryCharging: 充電
+  BatteryFull: バッテリーは\n完全に充電されています。\n充電器を外してください。
+  E-3-Message: 加熱時間が長すぎました。ボトルが大きすぎないかご確認ください。
+  E-4-Message: ボトルに氷が多すぎないかご確認ください。問題が解決しない場合は、カスタマーサービスまでご連絡ください。
+  E-5-Message: 温度センサーの故障です。\nカスタマーサービスまでご連絡ください。
+  E-7-Message: ウィッグボトルのシールをご確認ください。問題が解決しない場合は、カスタマーサービスまでご連絡ください。
+  BatteryLow: バッテリー残量が少なくなっています。\n充電してください。
+  E-8-Message: 加熱温度が基準に達しました。
+  BreastMilk: 母乳
+  WaterFormula: 水/粉ミルク
+  DeFreeze: 解凍する
+  BabyFood: 離乳食
+  DeOdorize: 魚臭さを取り除く
+  'OFF': 近い
+  Minute: 分
+  Minutes: 分
+  StartWarming: OK 長押し加熱開始
+  HeatingMode: 暖房モード
+  TemperatureUnit: 温度单位
+  BottleSize: 暖房能力
+  KeepWarmTime: 保持時間
+  Notification: ヒント
+  Language: 言語
+  Bluetooth: ブルートゥース
+  UserInstructions: 製品マニュアル
+  About: について
+  Vibration: 振動のオン/オフ
+  Ringtone: 音を消す - 音量 0
+  Level1: 音量 1
+  Level2: 音量 2
+  Level3: 音量 3
+  Level4: 音量 4
+  Level5: 音量 5
+  FWUpdateProgress: プログラム\nは更新中です
+  FWUpgradeCaution: 電源をオフに、\nBluetoothを切断し\nないでください。
+  FirmwareUpdated: プログラム\nアップデート完了
+  Rebooting: 再起動中。。。
+  UpdateFailed: 更新に\n失敗しました
+  PowerOffInfo: 閉じるまで押し\n続けてください。
+  OKtoConfirm: OK を押して確定
+  Celsius: 摂氏度
+  Fahrenheit: 華氏
+  MeasuringTemperature: 温度測定中
+  MeasuredTemperature: 温度を測る
+  AvoidLeaking: 漏れを防ぐ
+  LanguageSetReboot: 言語セット\n再起動中。。。

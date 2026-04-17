@@ -1,0 +1,55 @@
+zh-SG:
+  Manufacture: Made in Singapore
+  DownloadAppScan: 扫码下载app
+  120ml: 少于180ml
+  240ml: 多于 180ml
+  WarmingDone: 加热完毕
+  WarmingDone-KeepingProgress: 加热完毕。\n保温中
+  KeepingProgress: 保温中
+  KeepingDone: 保温结束
+  BatteryCharging: 充电中
+  BatteryFull: '电池已经充电完毕,\n请断开充电器'
+  E-3-Message: 加热时间过长。请检查你奶瓶是否过大容量。
+  E-4-Message: '请检查奶瓶是否有过多冰块。如果问题持续, 请联系售后客服。'
+  E-5-Message: 温度感应故障。请联系售后客服
+  E-7-Message: 请检查瓶盖密封性。如果问题持续, 请联系售后客服。
+  BatteryLow: 低电量。请充电
+  E-8-Message: 加热温度已经达标
+  BreastMilk: 母乳
+  WaterFormula: 水/冲奶粉
+  DeFreeze: 解冻
+  BabyFood: 婴儿辅食
+  DeOdorize: 去腥
+  'OFF': 关
+  Minute: 分钟
+  Minutes: 分钟
+  StartWarming: 按住 OK 键开始加热
+  HeatingMode: 加热模式
+  TemperatureUnit: 温度单位
+  BottleSize: 奶瓶大小
+  KeepWarmTime: 保温时间
+  Notification: 提示
+  Language: 语言
+  Bluetooth: 蓝牙
+  UserInstructions: 使用说明书
+  About: 关于本机
+  Vibration: 振动 开/关
+  Ringtone: 静音
+  Level1: 第一档
+  Level2: 第二档
+  Level3: 第三档
+  Level4: 第四档
+  Level5: 第五档
+  FWUpdateProgress: 程序更新中
+  FWUpgradeCaution: 请不要关闭温奶机\n或\n断开蓝牙
+  FirmwareUpdated: 程序更新完毕
+  Rebooting: 重启中。。。
+  UpdateFailed: 更新不成功
+  PowerOffInfo: 继续按\n直至关闭
+  OKtoConfirm: 按 OK 键确认
+  Celsius: 摄氏度
+  Fahrenheit: 华氏度
+  MeasuringTemperature: 温度测量中
+  MeasuredTemperature: 测量温度
+  AvoidLeaking: 防漏奶
+  LanguageSetReboot: 语言设置。\n重启中。。。

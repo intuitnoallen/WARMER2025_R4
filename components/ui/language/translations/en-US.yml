@@ -1,0 +1,59 @@
+en-US:
+  Manufacture: Made in Singapore
+  DownloadAppScan: Scan To\nDownload App
+  120ml: Less Than 180ml
+  240ml: More Than 180ml
+  WarmingDone: Warming Done
+  WarmingDone-KeepingProgress: Warming Done.\nKeeping in\nProgress.
+  KeepingProgress: Keeping in Progress
+  KeepingDone: Keeping Done
+  BatteryCharging: Battery\nCharging
+  BatteryFull: Battery Full.\nPlease disconnect\ncharger.
+  E-3-Message: >-
+    Warming is taking too long. Please check if your bottle size exceeds the
+    maximum allowed limit.
+  E-4-Message: >-
+    Please check if the bottle has too much ice. Contact customer service if
+    issue persists.
+  E-5-Message: Temperature sensing \nis malfunctioning. Please contact customer service.
+  E-7-Message: Please check the wigg bottle seal. Contact customer service if issue persists.
+  BatteryLow: Battery low. Please recharge.
+  E-8-Message: The target \ntemperature has already been reached.
+  BreastMilk: Breast Milk
+  WaterFormula: Water - Formula
+  DeFreeze: DeFreeze
+  BabyFood: Baby Food
+  DeOdorize: DeOdorize
+  'OFF': 'OFF'
+  Minute: Minute
+  Minutes: Minutes
+  StartWarming: Hold OK to start warming
+  HeatingMode: HEATING\nMODE
+  TemperatureUnit: TEMPERATURE\nUNIT
+  BottleSize: BOTTLE\nSIZE
+  KeepWarmTime: KEEP-WARM\nTIME
+  Notification: NOTIFICATION
+  Language: LANGUAGE
+  Bluetooth: BLUETOOTH
+  UserInstructions: USER\nINSTRUCTIONS
+  About: ABOUT
+  Vibration: Vibration ON/OFF
+  Ringtone: Mute - Level 0
+  Level1: Level 1
+  Level2: Level 2
+  Level3: Level 3
+  Level4: Level 4
+  Level5: Level 5
+  FWUpdateProgress: Firmware\nUpdate in Progress
+  FWUpgradeCaution: Do Not Power OFF \nor Disconnect\nBluetooth
+  FirmwareUpdated: Firmware Updated
+  Rebooting: Rebooting...
+  UpdateFailed: Update Failed
+  PowerOffInfo: Keep holding to \nPOWER OFF
+  OKtoConfirm: Press OK to confirm
+  Celsius: Celsius
+  Fahrenheit: Fahrenheit
+  MeasuringTemperature: Measuring\nTemperature
+  MeasuredTemperature: Measured\nTemperature
+  AvoidLeaking: Avoid Leaking
+  LanguageSetReboot: Language Set.\nRebooting...
