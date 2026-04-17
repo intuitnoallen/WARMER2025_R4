@@ -138,7 +138,7 @@ typedef struct
 #define TEMPERATURE_SETTING_MIN             35
 #define TEMPERATURE_SETTING_MAX             50
 #define TEMPERATURE_LOW_E4                 -15 // Error temperature low 
-#define TEMPERATURE_HIGH_E5                 60 // Error temperature high
+#define TEMPERATURE_HIGH_E5                 75 // Error temperature high
 
 /** @brief  Fixed set point in Celsius degrees for frozen mode */
 #define WARMER_FROZEN_SET_POINT_TEMP        40

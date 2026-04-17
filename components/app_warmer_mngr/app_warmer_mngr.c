@@ -76,6 +76,9 @@
 /** @brief  Period in milliseconds sending device measurements and statuses over Bluetooth */
 #define WARMER_BLE_PERIOD                       500
 
+/** @brief  Period in milliseconds for temperature errors triggers */
+#define WARMER_NTC_ERR_TIMER                   1000
+
 /** @brief  Interval (milliseconds) heatind and warming  */
 #define WARMER_HEATING_MILK                     (9 * 1000)//(3 * 1000)
 #define WARMER_WARMING_MILK                     (1 * 1000)//(2 * 1000)
@@ -964,6 +967,7 @@ static void v_WARMER_Update_Inputs (void)
     static TickType_t x_encoder_timer = 0;
     static TickType_t x_rpm_stable_timer = 0;
     static TickType_t x_rpm_E7_timer = 0; 
+    static TickType_t x_ntc_err_timer = 0; 
     static TickType_t x_charger_plug_in_timer = 0;
     static TickType_t x_plug_in_batt_percent_update_timer = 0;  
 
@@ -1351,11 +1355,19 @@ static void v_WARMER_Update_Inputs (void)
     }
 
     if(g_stru_dev.flt_temperature >= TEMPERATURE_HIGH_E5){
+        if(TIMER_ELAPSED (x_ntc_err_timer) >= pdMS_TO_TICKS (WARMER_NTC_ERR_TIMER)){
             g_stru_dev.b_ntc_high_err = true;   
-        }
+        }   
+    }
     else if(g_stru_dev.flt_temperature <= TEMPERATURE_LOW_E4){
+        if(TIMER_ELAPSED (x_ntc_err_timer) >= pdMS_TO_TICKS (WARMER_NTC_ERR_TIMER)){
             g_stru_dev.b_ntc_low_err = true; 
         }
+    }
+    else
+    {
+        TIMER_RESET(x_ntc_err_timer);
+    }
       
         
     /*Determine if ntc temperature is in error state */
