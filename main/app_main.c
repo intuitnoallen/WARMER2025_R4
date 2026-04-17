@@ -138,8 +138,8 @@ void app_main (void)
     // }
 
     // gpio_reset_pin(GPIO_NUM_19);
-    // rtc_gpio_hold_dis(GPIO_NUM_26); 
-    // gpio_reset_pin(GPIO_NUM_26);
+    rtc_gpio_hold_dis(GPIO_NUM_26); 
+    gpio_reset_pin(GPIO_NUM_26);
 
     
     ESP_LOGI (TAG, "***********************");

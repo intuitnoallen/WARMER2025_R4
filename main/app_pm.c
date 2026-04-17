@@ -71,7 +71,7 @@ void app_pm_deep_sleep( void )
     rtc_gpio_set_direction(GPIO_NUM_26, RTC_GPIO_MODE_OUTPUT_ONLY);
     // rtc_gpio_pullup_en(26);    // disable pullup if not needed
     // rtc_gpio_pulldown_dis(26);  // disable pulldown if not needed
-    rtc_gpio_set_level(GPIO_NUM_26, 1);
+    rtc_gpio_set_level(GPIO_NUM_26, 0);
     rtc_gpio_hold_en(GPIO_NUM_26);
 
     //  esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_ON);
