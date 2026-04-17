@@ -26,6 +26,7 @@
 #include "lcd_task.h"
 #include "app_ble.h"
 #include "ui_common.h"
+#include "srvc_button.h"
 
 
 static const char *TAG = "APP_BLE";
@@ -1102,7 +1103,7 @@ void esp_ble_ota_process_recv_data(esp_ble_ota_char_t ota_char, uint8_t *val, ui
 
             if (recv_sector != cur_sector) { // sector error
                 if (recv_sector == 0xffff) { // last sector
-                    ESP_LOGI(TAG, "Laster sector");
+                    // ESP_LOGI(TAG, "Last sector");
                 } else {  // sector error
                     ESP_LOGE(TAG, "Sector index error, cur: %d, recv: %d", cur_sector, recv_sector);
                     esp_ble_ota_send_ack_data(BLE_OTA_FW_ACK, BLE_OTA_FW_IND_ERR, recv_sector);
@@ -1111,7 +1112,7 @@ void esp_ble_ota_process_recv_data(esp_ble_ota_char_t ota_char, uint8_t *val, ui
 
             if (val[2] != cur_packet) { // packet seq error
                 if (val[2] == 0xff) { // last packet
-                    ESP_LOGI(TAG, "laster packet");
+                    // ESP_LOGI(TAG, "Last packet");
                     goto write_ota_data;
                 } else { // packet seq error
                     ESP_LOGE(TAG, "Packet index error, cur: %d, recv: %d", cur_packet, val[2]);
@@ -1124,7 +1125,8 @@ write_ota_data:
             if (val[2] == 0xff) {
                 cur_packet = 0;
                 cur_sector++;
-                ESP_LOGD(TAG, "DEBUG: recv %d sector", cur_sector);
+                // ESP_LOGI(TAG, "DEBUG: recv %d sector", cur_sector);
+                vTaskDelay(2);
                 goto sector_end;
             } else {
                 cur_packet++;
@@ -1913,6 +1915,8 @@ static void app_ble_parse (uint8_t *data, uint16_t data_len) //from app
                     s_ota_mode = true;
                     device_data.ota_mode = s_ota_mode;
                     vTaskDelay (pdMS_TO_TICKS (20));
+                    BTN_Stop_Task_For_OTA();
+                    vTaskDelay (pdMS_TO_TICKS (500));
                     ota_task_init();
                     
                     // vTaskDelay (pdMS_TO_TICKS (1000)); 

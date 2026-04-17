@@ -74,7 +74,7 @@
 
 
 /** @brief  Period in milliseconds sending device measurements and statuses over Bluetooth */
-#define WARMER_BLE_PERIOD                       500
+#define WARMER_BLE_PERIOD                       800
 
 /** @brief  Period in milliseconds for temperature errors triggers */
 #define WARMER_NTC_ERR_TIMER                   1000

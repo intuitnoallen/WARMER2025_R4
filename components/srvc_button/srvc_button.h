@@ -114,6 +114,8 @@ extern BTN_state_t enm_BTN_Get_State (BTN_inst_t x_inst);
 /* Gets interval in milliseconds that a button has been pressed or released */
 extern uint32_t u32_BTN_Get_Level_Interval (BTN_inst_t x_inst);
 
+void BTN_Stop_Task_For_OTA(void);
+
 #endif /* __SRVC_BUTTON_H__ */
 
 /**

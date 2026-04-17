@@ -16,6 +16,7 @@ static esp_ota_handle_t out_handle;
 static RingbufHandle_t s_ringbuf = NULL;
 SemaphoreHandle_t notify_sem;
 volatile bool is_timeout_detected = false;
+volatile int64_t last_packet_time = 0;
 
 esp_timer_handle_t ota_timeout_timer;
 bool timer_created = false;
@@ -357,8 +358,15 @@ void ota_task(void *arg)
         esp_timer_create(&timeout_args, &ota_timeout_timer);
         timer_created = true;
     }
+
+    // Set the initial timestamp before starting
+    last_packet_time = esp_timer_get_time();
+
     // Start/restart timer 
-    esp_timer_start_once(ota_timeout_timer, 30000000);
+    // esp_timer_start_once(ota_timeout_timer, 30000000);
+
+    // Start a PERIODIC timer that checks every 3 seconds (3,000,000 us)
+    esp_timer_start_periodic(ota_timeout_timer, 3000000);
 
     /*deal with all receive packet*/
     for (;;) {
@@ -366,7 +374,7 @@ void ota_task(void *arg)
         data = (uint8_t *)xRingbufferReceive(s_ringbuf, &item_size, (TickType_t)portMAX_DELAY);
         
         if (is_timeout_detected) {
-        // if (data) vRingbufferReturnItem(s_ringbuf, (void *)data);
+             if (data) vRingbufferReturnItem(s_ringbuf, (void *)data);
         goto OTA_ERROR;
         }
 
@@ -400,8 +408,9 @@ void ota_task(void *arg)
         lv_bar_set_value(ui_FirmwareUpdateBar, percent, LV_ANIM_OFF);
 
         if (timer_created) {
-        esp_timer_stop(ota_timeout_timer);
-        esp_timer_start_once(ota_timeout_timer, 30000000);
+        // esp_timer_stop(ota_timeout_timer);
+        // esp_timer_start_once(ota_timeout_timer, 30000000);
+        last_packet_time = esp_timer_get_time();
         }
 
         if (item_size != 0) {
@@ -475,13 +484,20 @@ ota_recv_fw_cb(uint8_t *buf, uint32_t length)
 }
 
 void ota_timeout_callback(void* arg) {
-    timer_created=false;
-    esp_timer_stop(ota_timeout_timer);
-    is_timeout_detected = true;
-    ESP_LOGI(TAG, "OTA Timeout");
+    int64_t current_time = esp_timer_get_time();
+    
 
-    uint8_t dummy_byte = 0xFF;
-    xRingbufferSend(s_ringbuf, &dummy_byte, 1, 0);
+    if ((current_time - last_packet_time) >= 30000000) {
+        // timer_created=false;
+        esp_timer_stop(ota_timeout_timer);
+        
+        is_timeout_detected = true;
+        ESP_LOGW(TAG, "OTA Timeout");
+
+        uint8_t dummy_byte = 0xFF;
+        xRingbufferSend(s_ringbuf, &dummy_byte, 1, 0);
+    }
+
 }
 
 void ota_task_init(void)

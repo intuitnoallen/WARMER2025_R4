@@ -95,13 +95,13 @@ struct BTN_obj
 #define BTN_BUTTON_PRESSED              BIT0
 
 /** @brief  Cycle in milliseconds of the loop processing buttons while any of them are active */
-#define BTN_PROCESS_CYCLE               20//50
+#define BTN_PROCESS_CYCLE               50
 
 /** @brief  Unused value of button hold time */
 #define BTN_NO_HOLD                     0
 
 /** @brief  Debounce interval in milliseconds when a button is released */
-#define BTN_DEBOUNCE_RELEASE_MS         10//100
+#define BTN_DEBOUNCE_RELEASE_MS         100
 
 /*
 ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -367,6 +367,10 @@ static void v_BTN_Main_Task (void * pv_param)
     g_b_initialized = true;
     while (g_b_initialized)
     {
+        if (!g_b_initialized) {
+            break; 
+        }
+        
         /* Wait until any button is pressed */
         xTaskNotifyWait (u32_bits_to_clear_on_entry, u32_bits_to_clear_on_exit, &u32_notify_value, portMAX_DELAY);
         if (u32_notify_value & BTN_BUTTON_PRESSED)
@@ -374,11 +378,25 @@ static void v_BTN_Main_Task (void * pv_param)
             /* Process all buttons until all are idle */
             v_BTN_Process_Buttons ();
         }
-        // PRINT_STACK_USAGE (4000); 
+        // PRINT_STACK_USAGE (4000);
     }
 
     /* Kill this task */
     vTaskDelete (NULL);
+}
+
+void BTN_Stop_Task_For_OTA(void)
+{
+    if (g_x_button_task != NULL)
+    {
+        
+        g_b_initialized = false;
+
+        // dummy notification to wake it up from portMAX_DELAY
+        // eNoAction wakes the task without changing the notification value
+        xTaskNotify(g_x_button_task, 0, eNoAction);
+        g_x_button_task = NULL; 
+    }
 }
 
 /**
@@ -526,6 +544,12 @@ static void v_BTN_Debounce (BTN_inst_t x_inst)
 */
 static void v_BTN_Gpio_Isr_Handler (GPIO_evt_data_t * pstru_evt_data)
 {
+
+    if (g_x_button_task == NULL || !g_b_initialized) {
+       // Ignore the hardware interrupt.
+        return; 
+    }
+
     BTN_inst_t x_inst = pstru_evt_data->pv_arg;
 
     /* If the button is pressed */
