@@ -1651,7 +1651,29 @@ static void v_WARMER_Run_State_Machine (void)
 
      
 
-    if(g_stru_config.u8_heater_mode != HEATER_M_BABYFOOD)
+    if(g_stru_config.u8_heater_mode == HEATER_M_BABYFOOD)
+    {
+        /* Determine if all conditions for heating are met */
+        b_ready_for_heating =   (g_stru_dev.b_bottle_attached) &&
+                                // (!g_stru_dev.b_charging) && //allow heating while charging, changed on request
+                                (g_stru_dev.u16_bat_voltage > WARMER_HEATER_CUTOFF_VOLTAGE) &&
+                                (!g_stru_dev.b_ntc_low_err) &&
+                                (!g_stru_dev.b_ntc_high_err);
+
+        
+    }
+    else if(g_stru_config.u8_heater_mode == HEATER_M_FROZEN)
+    {
+        /* Determine if all conditions for heating are met */
+        b_ready_for_heating =   (g_stru_dev.b_bottle_attached) &&
+                                (!g_stru_dev.b_tilted) &&
+                                // (!g_stru_dev.b_charging) && //allow heating while charging, changed on request
+                                (g_stru_dev.u16_bat_voltage > WARMER_HEATER_CUTOFF_VOLTAGE) &&
+                                //(!g_stru_dev.b_wigg_seal_err) &&
+                                (!g_stru_dev.b_ntc_low_err) &&
+                                (!g_stru_dev.b_ntc_high_err);
+    }
+    else
     {
         /* Determine if all conditions for heating are met */
         b_ready_for_heating =   (g_stru_dev.b_bottle_attached) &&
@@ -1659,16 +1681,6 @@ static void v_WARMER_Run_State_Machine (void)
                                 // (!g_stru_dev.b_charging) && //allow heating while charging, changed on request
                                 (g_stru_dev.u16_bat_voltage > WARMER_HEATER_CUTOFF_VOLTAGE) &&
                                 (!g_stru_dev.b_wigg_seal_err) &&
-                                (!g_stru_dev.b_ntc_low_err) &&
-                                (!g_stru_dev.b_ntc_high_err);
-    }
-    else
-    {
-        /* Determine if all conditions for heating are met */
-        b_ready_for_heating =     
-                                (g_stru_dev.b_bottle_attached) &&
-                                // (!g_stru_dev.b_charging) && //allow heating while charging, changed on request
-                                (g_stru_dev.u16_bat_voltage > WARMER_HEATER_CUTOFF_VOLTAGE) &&
                                 (!g_stru_dev.b_ntc_low_err) &&
                                 (!g_stru_dev.b_ntc_high_err);
     }
@@ -1974,7 +1986,7 @@ static void v_WARMER_Run_State_Machine (void)
                 
                 if(TIMER_ELAPSED(x_motor_timer) > pdMS_TO_TICKS(1600)){  
                     // v_WARMER_Control_Motor (WARMER_MOTOR_FINAL_PWM);
-                    if(g_stru_config.u8_heater_mode != HEATER_M_BABYFOOD)
+                    if(g_stru_config.u8_heater_mode != HEATER_M_BABYFOOD && g_stru_config.u8_heater_mode != HEATER_M_FROZEN)
                     {
                         isMotor_PID_En = true;
                     }else{
@@ -1983,7 +1995,7 @@ static void v_WARMER_Run_State_Machine (void)
                     }
                 }
                 else if(TIMER_ELAPSED(x_motor_timer) > pdMS_TO_TICKS(100)){  
-                    if(g_stru_config.u8_heater_mode != HEATER_M_BABYFOOD)
+                    if(g_stru_config.u8_heater_mode != HEATER_M_BABYFOOD && g_stru_config.u8_heater_mode != HEATER_M_FROZEN)
                     { 
                      v_WARMER_Control_Motor (WARMER_MOTOR_INITIAL_PWM);
                     }
