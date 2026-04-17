@@ -89,8 +89,9 @@
 #define WARMER_HEATING_FROZEN                   (8 * 1000)
 #define WARMER_WARMING_FROZEN                   (2 * 1000)
 
-#define WARMER_HEATING_FAILURE                  (30 * 1000)
+#define WARMER_HEATING_FAILURE                  (2 * 60 * 1000)
 #define WARMER_TEMP_READ_FAILURE                (20 * 60 * 1000)
+#define WARMER_TEMP_READ_FAILURE_FROZEN         (40 * 60 * 1000)
 #define WARMER_INTERVAL_CHECK                   (5 * 1000) 
 
 /** @brief  Interval (milliseconds) maintaining temperature after reaching set point for different fluids and volumes */
@@ -2040,7 +2041,13 @@ static void v_WARMER_Run_State_Machine (void)
                     }
                 }
               
-                if (TIMER_ELAPSED (x_heating_err_timer) >= pdMS_TO_TICKS (WARMER_TEMP_READ_FAILURE)) //
+                if (TIMER_ELAPSED (x_heating_err_timer) >= pdMS_TO_TICKS (WARMER_TEMP_READ_FAILURE_FROZEN)) //
+                {
+                    g_stru_config.b_heater_failure = true;
+                    WARMER_CHANGE_STATE (WARMER_STATE_IDLE);
+                    v_WARMER_Control_Heater (WARMER_HEATER_OFF);
+                }
+                else if (TIMER_ELAPSED (x_heating_err_timer) >= pdMS_TO_TICKS (WARMER_TEMP_READ_FAILURE) && g_stru_config.u8_heater_mode != HEATER_M_FROZEN) //
                 {
                     g_stru_config.b_heater_failure = true;
                     WARMER_CHANGE_STATE (WARMER_STATE_IDLE);

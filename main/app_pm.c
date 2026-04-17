@@ -188,7 +188,7 @@ static void RTC_IRAM_ATTR wake_stub( void )
                 // booting the firmware.
                 return;
                 }
-        }else if (PLUG_IN_GPIO()==1 && COVER_DET_GPIO()==1) {
+        }else if (PLUG_IN_GPIO()==1){   //&& COVER_DET_GPIO()==1) {
             // feed the watchdog
             s_pulse_count++;
             REG_WRITE(TIMG_WDTFEED_REG(0), 1);
