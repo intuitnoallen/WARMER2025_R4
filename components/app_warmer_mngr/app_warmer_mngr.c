@@ -409,6 +409,9 @@ WARMER_status_t enm_WARMER_Init (void)
     s8_PARAM_Get_Uint8 (PARAM_HEATER_MODE, &u8_value);
     g_stru_config.u8_heater_mode = u8_value;
 
+    s8_PARAM_Get_Uint8 (PARAM_HEATER_POWER, &u8_value);
+    g_stru_config.u8_heater_pwr_lvl = u8_value;
+
     s8_PARAM_Get_Uint8 (PARAM_WIGG_MODE_ENABLED, &u8_value);
     g_stru_config.b_wigg_mode = u8_value;
 
@@ -652,6 +655,13 @@ WARMER_status_t enm_WARMER_Save_Config (void)
     if (s8_PARAM_Set_Uint8 (PARAM_HEATER_MODE, u8_value) != PARAM_OK)
     {
         LOGE ("Failed to write PARAM_HEATER_MODE parameter");
+        enm_result = WARMER_ERR;
+    }
+
+    u8_value = g_stru_config.u8_heater_pwr_lvl;
+    if (s8_PARAM_Set_Uint8 (PARAM_HEATER_POWER, u8_value) != PARAM_OK)
+    {
+        LOGE ("Failed to write PARAM_HEATER_POWER parameter");
         enm_result = WARMER_ERR;
     }
 
@@ -2632,6 +2642,34 @@ static void v_WARMER_Control_Heater (uint8_t u8_power)
 {
     static uint8_t u8_current = 0;
 
+    switch(g_stru_config.u8_heater_pwr_lvl){
+        case 1:
+            u8_power = (uint8_t)((u8_power * HEATER_PWR_P_LEVEL_1) / 100);
+        break;
+
+        case 2:
+            u8_power = (uint8_t)((u8_power * HEATER_PWR_P_LEVEL_2) / 100);
+        break;
+
+        case 3:
+            u8_power = (uint8_t)((u8_power * HEATER_PWR_P_LEVEL_3) / 100);
+        break;
+
+        case 4:
+            u8_power = (uint8_t)((u8_power * HEATER_PWR_P_LEVEL_4) / 100);
+        break;
+
+        case 5:
+            u8_power = (uint8_t)((u8_power * HEATER_PWR_P_LEVEL_5) / 100);
+        break;
+
+        default:
+            u8_power = (uint8_t)((u8_power * HEATER_PWR_P_LEVEL_5) / 100);
+            // LOGW("Default: %d",u8_power);
+        break;
+    }
+
+
     /* Do nothing if control state is not changed */
     if (u8_power == u8_current)
     {
@@ -3057,7 +3095,11 @@ static void v_WARMER_Print_Info (void)
     LOGI ("\t+ Heater mode        : %s", (g_stru_config.u8_heater_mode == HEATER_M_FROZEN) ? "Frozen" :
                                          (g_stru_config.u8_heater_mode == HEATER_M_MILK) ? "Milk" :
                                          (g_stru_config.u8_heater_mode == HEATER_M_WATER) ?"Water" : "BABYFOOD");
-                                         
+    LOGI ("\t+ Heater power       : %s", (g_stru_config.u8_heater_pwr_lvl == 1) ? "LEVEL 1" :
+                                         (g_stru_config.u8_heater_pwr_lvl == 2) ? "LEVEL 2" :
+                                         (g_stru_config.u8_heater_pwr_lvl == 3) ? "LEVEL 3" :
+                                         (g_stru_config.u8_heater_pwr_lvl == 4) ? "LEVEL 4" :
+                                        (g_stru_config.u8_heater_pwr_lvl == 5) ? "LEVEL 5" : "Not Available");                                         
     LOGI ("\t+ Keep Warm Period   : %d minute", g_stru_config.u8_Keep_warm_period);
     
     LOGI ("\t+ Bottle Size        : %s", (g_stru_config.enm_volume_level == WARMER_VOLUME_120)        ? "Small" :

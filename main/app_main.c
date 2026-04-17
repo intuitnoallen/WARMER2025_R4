@@ -162,7 +162,7 @@ static void v_MAIN_Init (void)
 {
     _LOGW("Main Init");
     // Watchdog Init
-    ESP_ERROR_CHECK(esp_task_wdt_init(1, true));
+    ESP_ERROR_CHECK(esp_task_wdt_init(2, true));
 
     /* Turn off logging of GPIO module so that it won't flush the console when input/output mode of pins change */
     esp_log_level_set ("gpio", ESP_LOG_NONE);

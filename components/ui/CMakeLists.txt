@@ -6,6 +6,7 @@ idf_component_register(SRCS
     screens/ui_Language.c
     screens/ui_KeepWarm.c
     screens/ui_HeatingModes.c
+    screens/ui_HeatingPower.c
     screens/ui_TempSetting.c
     screens/ui_KeepWarm.c
     screens/ui_BottleSize.c
@@ -33,11 +34,10 @@ idf_component_register(SRCS
     images_compressed/ui_img_ble_png.c
     images_compressed/ui_img_battery_png.c
     images_compressed/ui_img_heatmodes_png.c
-    # images_compressed/ui_img_temp_set_png.c
     images_compressed/ui_img_temp_unit_png.c
     images_compressed/ui_img_bottlesmall_png.c
     images_compressed/ui_img_bottlelarge_png.c
-    # images_compressed/ui_img_maintain_time_png.c
+    images_compressed/ui_img_heating_pwr_png.c
     images_compressed/ui_img_keeping_warm_off_png.c
     images_compressed/ui_img_keeping_warm_png.c
     images_compressed/ui_img_notification_png.c

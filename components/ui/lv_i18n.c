@@ -72,6 +72,7 @@ static lv_i18n_phrase_t en_us_singulars[] = {
     {"MeasuredTemperature", "Measured\nTemperature"},
     {"AvoidLeaking", "Avoid Leaking"},
     {"LanguageSetReboot", "Language Set.\nRebooting..."},
+    {"HeatingPower", "HEATING\nPOWER"},
     {NULL, NULL} // End mark
 };
 
@@ -149,6 +150,7 @@ static lv_i18n_phrase_t ja_jp_singulars[] = {
     {"MeasuredTemperature", "温度を測る"},
     {"AvoidLeaking", "漏れを防ぐ"},
     {"LanguageSetReboot", "言語セット\n再起動中。。。"},
+    {"HeatingPower", "火力"},
     {NULL, NULL} // End mark
 };
 
@@ -224,6 +226,7 @@ static lv_i18n_phrase_t ko_kr_singulars[] = {
     {"MeasuredTemperature", "온도를 \n측정하다"},
     {"AvoidLeaking", "누출을 방지하다"},
     {"LanguageSetReboot", "언어 세트\n재부팅 중..."},
+    {"HeatingPower", "난방력"},
     {NULL, NULL} // End mark
 };
 
@@ -299,6 +302,7 @@ static lv_i18n_phrase_t zh_sg_singulars[] = {
     {"MeasuredTemperature", "测量温度"},
     {"AvoidLeaking", "防漏奶"},
     {"LanguageSetReboot", "语言设置。\n重启中。。。"},
+    {"HeatingPower", "加热功率"},
     {NULL, NULL} // End mark
 };
 

@@ -41,6 +41,7 @@ extern lv_group_t *groupMain;
 extern lv_group_t *groupWarming;
 extern lv_group_t *groupMenu;
 extern lv_group_t *groupHeatingModes;
+extern lv_group_t *groupHeatingPower;
 extern lv_group_t *groupTempSetting;
 extern lv_group_t *groupTempUnitSetting;
 extern lv_group_t *groupThermometer;

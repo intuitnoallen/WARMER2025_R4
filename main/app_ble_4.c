@@ -1811,12 +1811,7 @@ static void app_ble_parse (uint8_t *data, uint16_t data_len) //from app
         // }
 
         //keep-warm period
-        // if (u8_control_len == BLE_DATA_CONTROL_LEN_V3)
-        // {
-        //     /* keep warm period */
-        //     (ble_packet.data[8]> WARMER_KEEP_WARMER_LEVEL_MAX) ? (g_pstru_config->u8_Keep_warm_level = 0) : (g_pstru_config->u8_Keep_warm_level = ble_packet.data[8]);
-        // }
-         if( ble_packet.data[8] == 0x00 )
+        if( ble_packet.data[8] == 0x00 )
         {
             g_pstru_config->u8_Keep_warm_level = 0;
         }
@@ -1863,6 +1858,19 @@ static void app_ble_parse (uint8_t *data, uint16_t data_len) //from app
             g_pstru_config->enm_device_language = DEVICE_LANGUAGE_JA_JP;
         }else if(ble_packet.data[10] == 0x03){
             g_pstru_config->enm_device_language = DEVICE_LANGUAGE_KO_KR;
+        }
+
+        //Heating Power Level
+        if(ble_packet.data[11] == 0x01){ 
+           g_pstru_config->u8_heater_pwr_lvl = 1;
+        }else if(ble_packet.data[11] == 0x02){
+           g_pstru_config->u8_heater_pwr_lvl = 2;
+        }else if(ble_packet.data[11] == 0x03){
+           g_pstru_config->u8_heater_pwr_lvl = 3;
+        }else if(ble_packet.data[11] == 0x04){
+           g_pstru_config->u8_heater_pwr_lvl = 4;
+        }else if(ble_packet.data[11] == 0x05){
+           g_pstru_config->u8_heater_pwr_lvl = 5;
         }
       
         /* Store new configuration persistently */
@@ -1949,7 +1957,6 @@ static void app_ble_packing_data (ble_packet_t *ble_packet) //to app
 								   (g_pstru_config->u8_heater_mode == HEATER_M_FROZEN)? 0x02 : 0x03;
     ble_packet->data[data_len++] = (device_data.tilt_input == TILT_LOW)? 0x00 : 0x01;
     ble_packet->data[data_len++] = (device_data.cover_input == COVER_LOW)? 0x01 : 0x00;
-//    ble_packet->data[data_len++] = (device_data.battery.charging == BATTERY_NOT_CHARGING)? 0x00 : 0x01;
     ble_packet->data[data_len++] =  (device_data.ntc_temp_err == NTC_TEMP_LOW_ERR) ? 0x01 :
     								(device_data.ntc_temp_err == NTC_TEMP_HIGH_ERR) ? 0x02 : 0x00;
 
@@ -1987,7 +1994,8 @@ static void app_ble_packing_data (ble_packet_t *ble_packet) //to app
                                    g_pstru_config->enm_device_language == DEVICE_LANGUAGE_ZH_SG ? 0x01 :
                                    g_pstru_config->enm_device_language == DEVICE_LANGUAGE_JA_JP ? 0x02 :
                                    g_pstru_config->enm_device_language == DEVICE_LANGUAGE_KO_KR ? 0x03 : 0x00;
-    ble_packet->data[data_len++] = DEVICE_HARDWARE_VERSION;                               
+    ble_packet->data[data_len++] = DEVICE_HARDWARE_VERSION;
+    ble_packet->data[data_len++] = g_pstru_config->u8_heater_pwr_lvl;
     ble_packet->header.p.data_length = data_len;
 }
 

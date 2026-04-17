@@ -250,7 +250,56 @@ void setLanguageKorean(lv_event_t * e)
 	   esp_restart();
 }
 
+void toHeatingPowerScreen(lv_event_t * e)
+{
+       if (ui_HeatingPower == NULL) {
+       ui_HeatingPower_screen_init();
+       }
+       _ui_screen_change(&ui_HeatingPower, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_HeatingPower_screen_init);
+       vTaskDelay(pdMS_TO_TICKS(20));
+}
 
+void HeatingPowerGroupUpdate(lv_event_t * e)
+{
+    lv_group_add_obj(groupHeatingPower, ui_PanelHeatingPowerLvl1);
+    lv_group_add_obj(groupHeatingPower, ui_PanelHeatingPowerLvl2);
+    lv_group_add_obj(groupHeatingPower, ui_PanelHeatingPowerLvl3);
+    lv_group_add_obj(groupHeatingPower, ui_PanelHeatingPowerLvl4);
+    lv_group_add_obj(groupHeatingPower, ui_PanelHeatingPowerLvl5);
+
+    lv_indev_set_group(indev, groupHeatingPower);
+    lv_obj_scroll_to_view(ui_PanelHeatingPowerLvl1, LV_ANIM_OFF);
+    lv_group_set_focus_cb(groupHeatingPower, my_focus_cb);
+    lv_group_focus_obj(ui_PanelHeatingPowerLvl1);
+}
+
+void setHeatingPowerLvl1(lv_event_t * e)
+{
+       g_pstru_config->u8_heater_pwr_lvl = 1;
+       ToMainScreenNoAnim(e);
+}
+
+void setHeatingPowerLvl2(lv_event_t * e)
+{
+       g_pstru_config->u8_heater_pwr_lvl = 2;
+       ToMainScreenNoAnim(e);
+}
+
+void setHeatingPowerLvl3(lv_event_t * e)
+{
+       g_pstru_config->u8_heater_pwr_lvl = 3;
+       ToMainScreenNoAnim(e);
+}
+void setHeatingPowerLvl4(lv_event_t * e)
+{
+       g_pstru_config->u8_heater_pwr_lvl = 4;
+       ToMainScreenNoAnim(e);
+}
+void setHeatingPowerLvl5(lv_event_t * e)
+{
+       g_pstru_config->u8_heater_pwr_lvl = 5;
+       ToMainScreenNoAnim(e);
+}
 
 
 void ToOtaScreen(uint8_t ota){

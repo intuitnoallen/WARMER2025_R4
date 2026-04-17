@@ -179,6 +179,10 @@ void ui_event_PanelModes(lv_event_t * e);
 lv_obj_t * ui_PanelModes;
 lv_obj_t * ui_IconModes;
 lv_obj_t * ui_LabelModes;
+void ui_event_PanelHeatingPower(lv_event_t * e);
+lv_obj_t * ui_PanelHeatingPower;
+lv_obj_t * ui_IconHeatingPower;
+lv_obj_t * ui_LabelHeatingPower;
 void ui_event_PanelTempUnit(lv_event_t * e);
 lv_obj_t * ui_PanelTempUnit;
 lv_obj_t * ui_IconTempUnit;
@@ -240,6 +244,33 @@ lv_obj_t * ui_PanelDeodorize;
 lv_obj_t * ui_IconDeodorize;
 lv_obj_t * ui_LabelDeodorize;
 // CUSTOM VARIABLES
+
+// SCREEN: ui_HeatingPower
+void ui_HeatingPower_screen_init(void);
+void ui_event_HeatingPower(lv_event_t * e);
+lv_obj_t * ui_HeatingPower;
+void ui_event_PanelHeatingPowerLvl1(lv_event_t * e);
+lv_obj_t * ui_PanelHeatingPowerLvl1;
+lv_obj_t * ui_LabelHeatingPower1;
+lv_obj_t * ui_LabelHeatingPowerLevel1;
+void ui_event_PanelHeatingPowerLvl2(lv_event_t * e);
+lv_obj_t * ui_PanelHeatingPowerLvl2;
+lv_obj_t * ui_LabelHeatingPower2;
+lv_obj_t * ui_LabelHeatingPowerLevel2;
+void ui_event_PanelHeatingPowerLvl3(lv_event_t * e);
+lv_obj_t * ui_PanelHeatingPowerLvl3;
+lv_obj_t * ui_LabelHeatingPower3;
+lv_obj_t * ui_LabelHeatingPowerLevel3;
+void ui_event_PanelHeatingPowerLvl4(lv_event_t * e);
+lv_obj_t * ui_PanelHeatingPowerLvl4;
+lv_obj_t * ui_LabelHeatingPower4;
+lv_obj_t * ui_LabelHeatingPowerLevel4;
+void ui_event_PanelHeatingPowerLvl5(lv_event_t * e);
+lv_obj_t * ui_PanelHeatingPowerLvl5;
+lv_obj_t * ui_LabelHeatingPower5;
+lv_obj_t * ui_LabelHeatingPowerLevel5;
+// CUSTOM VARIABLES
+
 
 // SCREEN: ui_TempUnitSetting
 void ui_TempUnitSetting_screen_init(void);
@@ -839,6 +870,70 @@ void ui_event_PanelDeodorize(lv_event_t * e)
     }
 }
 
+void ui_event_PanelHeatingPower(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_KEY &&  lv_event_get_key(e) == LV_KEY_ENTER) {
+        toHeatingPowerScreen(e);
+    }
+}
+
+void ui_event_HeatingPower(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_SCREEN_LOAD_START) {
+        HeatingPowerGroupUpdate(e);
+    }
+}
+
+void ui_event_PanelHeatingPowerLvl1(lv_event_t * e)
+{
+     lv_event_code_t event_code = lv_event_get_code(e);
+
+     if(event_code == LV_EVENT_KEY &&  lv_event_get_key(e) == LV_KEY_ENTER) {
+        setHeatingPowerLvl1(e);
+     }
+}
+
+void ui_event_PanelHeatingPowerLvl2(lv_event_t * e)
+{
+     lv_event_code_t event_code = lv_event_get_code(e);
+
+     if(event_code == LV_EVENT_KEY &&  lv_event_get_key(e) == LV_KEY_ENTER) {
+        setHeatingPowerLvl2(e);
+     }
+}
+
+void ui_event_PanelHeatingPowerLvl3(lv_event_t * e)
+{
+     lv_event_code_t event_code = lv_event_get_code(e);
+
+     if(event_code == LV_EVENT_KEY &&  lv_event_get_key(e) == LV_KEY_ENTER) {
+        setHeatingPowerLvl3(e);
+     }
+}
+
+void ui_event_PanelHeatingPowerLvl4(lv_event_t * e)
+{
+     lv_event_code_t event_code = lv_event_get_code(e);
+
+     if(event_code == LV_EVENT_KEY &&  lv_event_get_key(e) == LV_KEY_ENTER) {
+       setHeatingPowerLvl4(e);
+     }
+}
+
+void ui_event_PanelHeatingPowerLvl5(lv_event_t * e)
+{
+     lv_event_code_t event_code = lv_event_get_code(e);
+
+     if(event_code == LV_EVENT_KEY &&  lv_event_get_key(e) == LV_KEY_ENTER) {
+        setHeatingPowerLvl5(e);
+     }
+}
+
+
 void ui_event_TempUnitSetting(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -1134,6 +1229,7 @@ void ui_init(void)
     ui_OTA_screen_init();
     // ui_Language_screen_init();
     // ui_HeatingModes_screen_init();
+    // ui_HeatingPower_screen_init();
     // ui_TempUnitSetting_screen_init();
     // ui_KeepWarm_screen_init();
     // ui_Notification_screen_init();

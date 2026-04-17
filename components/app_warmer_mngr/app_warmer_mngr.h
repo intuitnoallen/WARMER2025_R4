@@ -128,6 +128,7 @@ typedef struct
     DEVICE_language_t   enm_device_language;    //!< Device language
     uint8_t             u8_Keep_warm_level;     //!< specifies device keep warm level
     uint8_t             u8_Keep_warm_period;    //!< specifies whether keep warm period is enabled
+    uint8_t             u8_heater_pwr_lvl;
     bool                b_heater_failure;
     bool                b_low_bat_alert;
     bool                b_high_bat_alert;

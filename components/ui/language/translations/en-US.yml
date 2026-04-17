@@ -16,7 +16,9 @@ en-US:
     Please check if the bottle has too much ice. Contact customer service if
     issue persists.
   E-5-Message: Temperature sensing \nis malfunctioning. Please contact customer service.
-  E-7-Message: Please check the wigg bottle seal. Contact customer service if issue persists.
+  E-7-Message: >-
+    Please check the wigg bottle seal. Contact customer service if issue
+    persists.
   BatteryLow: Battery low. Please recharge.
   E-8-Message: The target \ntemperature has already been reached.
   BreastMilk: Breast Milk
@@ -57,3 +59,4 @@ en-US:
   MeasuredTemperature: Measured\nTemperature
   AvoidLeaking: Avoid Leaking
   LanguageSetReboot: Language Set.\nRebooting...
+  HeatingPower: HEATING\nPOWER

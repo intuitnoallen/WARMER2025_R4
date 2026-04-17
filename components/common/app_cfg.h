@@ -138,10 +138,19 @@ typedef enum
 {
     BUZZER_VOLUME_LEVEL_1 = 30,   //!< Volume level 1
     BUZZER_VOLUME_LEVEL_2 = 40,   //!< Volume level 2
-    BUZZER_VOLUME_LEVEL_3 = 50,  //!< Volume level 3
-    BUZZER_VOLUME_LEVEL_4 = 60,  //!< Volume level 4
-    BUZZER_VOLUME_LEVEL_5 = 100,   //!< Volume level 5
+    BUZZER_VOLUME_LEVEL_3 = 50,   //!< Volume level 3
+    BUZZER_VOLUME_LEVEL_4 = 60,   //!< Volume level 4
+    BUZZER_VOLUME_LEVEL_5 = 100,  //!< Volume level 5
 } BUZZER_volume_t;
+
+typedef enum
+{
+    HEATER_PWR_P_LEVEL_1 = 20,   //!< Heater Power Percent level 1
+    HEATER_PWR_P_LEVEL_2 = 40,   //!< Heater Power Percent level 2
+    HEATER_PWR_P_LEVEL_3 = 60,   //!< Heater Power Percent level 3
+    HEATER_PWR_P_LEVEL_4 = 80,   //!< Heater Power Percent level 4
+    HEATER_PWR_P_LEVEL_5 = 100,  //!< Heater Power Percent level 5
+} HEATER_PWR_P_t;
 
 typedef enum
 {

@@ -110,7 +110,9 @@ X( PARAM_HIGH_BAT_ALERT,            0x0112,     uint8_t,      0,          1,    
                                                                                                                        \
 /* HIGH BAT ALERT vbat > 16500 HIGH=1  NORMAL=0*/                                                                      \
 X( PARAM_BAT_PERCENT,               0x0113,     uint8_t,      0,          100,       0                                )\
-
+                                                                                                                       \
+/* Heater Power Level 1-5*/                                                                                            \
+X( PARAM_HEATER_POWER,              0x0114,     uint8_t,      1,          5,         5                                )\
 
 
 

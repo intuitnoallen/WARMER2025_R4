@@ -87,6 +87,7 @@ lv_group_t *groupMain;
 lv_group_t *groupWarming;
 lv_group_t *groupMenu;
 lv_group_t *groupHeatingModes;
+lv_group_t *groupHeatingPower;
 lv_group_t *groupTempSetting;
 lv_group_t *groupThermometer;
 lv_group_t *groupThermometerReading;
@@ -320,7 +321,7 @@ static uint32_t button_get_event(void)
                 if(curr_scr==ui_Error && focused_obj==ui_PanelERR8){
                     //do nothing for E-8 (Already Warm Error) it will disapper after set time, 2sec
                 }
-                else if(curr_scr==ui_Main || curr_scr==ui_Menu || curr_scr==ui_HeatingModes || curr_scr==ui_TempUnitSetting || curr_scr==ui_BottleSize
+                else if(curr_scr==ui_Main || curr_scr==ui_Menu || curr_scr==ui_HeatingModes || curr_scr==ui_HeatingPower || curr_scr==ui_TempUnitSetting || curr_scr==ui_BottleSize
                     || curr_scr==ui_KeepWarm || curr_scr==ui_Notification || curr_scr==ui_Language || curr_scr== ui_Error){
                     _ui_screen_change(&ui_Selected, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_Selected_screen_init);
                     vTaskDelay(pdMS_TO_TICKS(20));
@@ -344,7 +345,7 @@ static uint32_t button_get_event(void)
 
             case BTN_EVENT_UP_HOLD_SHORT_PRESSED:
             //    ESP_LOGW(TAG, "Button Event: UP_BTN_HOLD_SHORT_PRESSED");
-                if(curr_scr==ui_Main || curr_scr==ui_Menu || curr_scr==ui_HeatingModes || curr_scr==ui_TempUnitSetting || curr_scr==ui_BottleSize
+                if(curr_scr==ui_Main || curr_scr==ui_Menu || curr_scr==ui_HeatingModes || curr_scr==ui_HeatingPower || curr_scr==ui_TempUnitSetting || curr_scr==ui_BottleSize
                     || curr_scr==ui_KeepWarm || curr_scr==ui_Notification || curr_scr==ui_Error ){
                     app_notify_soft();
                     lv_obj_add_flag(ui_LabelCountDown, LV_OBJ_FLAG_HIDDEN);
@@ -544,7 +545,7 @@ if (g_b_btn_held)
                     ToMenuScreen(NULL);
                     vTaskDelay(pdMS_TO_TICKS(20));
                 }
-                else if(curr_scr==ui_Menu || curr_scr==ui_HeatingModes || curr_scr==ui_TempUnitSetting || curr_scr==ui_BottleSize
+                else if(curr_scr==ui_Menu || curr_scr==ui_HeatingModes || curr_scr==ui_HeatingPower || curr_scr==ui_TempUnitSetting || curr_scr==ui_BottleSize
                     || curr_scr==ui_KeepWarm || curr_scr==ui_Notification || curr_scr==ui_Language) {
 
                         if(focused_obj==ui_PanelKeepWarm){
@@ -806,6 +807,7 @@ void lcd_init(void)
     groupWarming = lv_group_create();
     groupMenu = lv_group_create();
     groupHeatingModes = lv_group_create();
+    groupHeatingPower = lv_group_create();
     groupLanguage = lv_group_create();
     groupBottleSize = lv_group_create();
     groupKeepWarm = lv_group_create();
@@ -834,7 +836,8 @@ void lcd_init(void)
 
     lv_group_add_obj(groupWarming, ui_PanelWarming);
 
-    lv_group_add_obj(groupMenu, ui_PanelModes);   
+    lv_group_add_obj(groupMenu, ui_PanelModes);
+    lv_group_add_obj(groupMenu, ui_PanelHeatingPower);   
     lv_group_add_obj(groupMenu, ui_PanelTempUnit);
     lv_group_add_obj(groupMenu, ui_PanelBottleSize);
     lv_group_add_obj(groupMenu, ui_PanelKeepWarm);
@@ -844,51 +847,13 @@ void lcd_init(void)
     lv_group_add_obj(groupMenu, ui_PanelInstructions);
     lv_group_add_obj(groupMenu, ui_PanelAbout);
            
-    // lv_group_add_obj(groupHeatingModes, ui_PanelMilk);
-    // lv_group_add_obj(groupHeatingModes, ui_PanelWaterFormula);
-    // lv_group_add_obj(groupHeatingModes, ui_PanelDefreeze);
-    // lv_group_add_obj(groupHeatingModes, ui_PanelBabyFood);
-    // lv_group_add_obj(groupHeatingModes, ui_PanelDeodorize);
-
-    // lv_group_add_obj(groupTempUnitSetting, ui_PanelCelsius);
-    // lv_group_add_obj(groupTempUnitSetting, ui_PanelFahrenheit);
-
-    // lv_group_add_obj(groupLanguage, ui_PanelEnglish);
-    // lv_group_add_obj(groupLanguage, ui_PanelChinese);
-    // lv_group_add_obj(groupLanguage, ui_PanelJapanese);
-    // lv_group_add_obj(groupLanguage, ui_PanelKorean);
-
-    // lv_group_add_obj(groupBottleSize, ui_PanelBottleSmall);
-    // lv_group_add_obj(groupBottleSize, ui_PanelBottleLarge);
-
-    // lv_group_add_obj(groupKeepWarm, ui_PanelKeepWarmOFF);
-    // lv_group_add_obj(groupKeepWarm, ui_PanelKeepWarmLvl1);
-    // lv_group_add_obj(groupKeepWarm, ui_PanelKeepWarmLvl2);
-    // lv_group_add_obj(groupKeepWarm, ui_PanelKeepWarmLvl3);
-    // lv_group_add_obj(groupKeepWarm, ui_PanelKeepWarmLvl4);
-    // lv_group_add_obj(groupKeepWarm, ui_PanelKeepWarmLvl5);
-    
-    // lv_group_add_obj(groupNotification, ui_PanelVibration);
-    // lv_group_add_obj(groupNotification, ui_PanelBuzzer);
-    // lv_group_add_obj(groupNotification, ui_PanelVolumeLvl1);
-    // lv_group_add_obj(groupNotification, ui_PanelVolumeLvl2);
-    // lv_group_add_obj(groupNotification, ui_PanelVolumeLvl3);
-    // lv_group_add_obj(groupNotification, ui_PanelVolumeLvl4);
-    // lv_group_add_obj(groupNotification, ui_PanelVolumeLvl5);
-
     lv_group_add_obj(groupOTAupdate, ui_PanelOTAProgress);
     lv_group_add_obj(groupOTAupdate, ui_PanelOTAUpdated);
     lv_group_add_obj(groupOTAupdate, ui_PanelOTAFailed);
 
-    // lv_group_add_obj(groupThermometer, ui_PanelTempMeasuring);
     lv_group_add_obj(groupThermometerReading, ui_PanelTempMeasured);
 
     lv_group_add_obj(groupTempSetting, ui_PanelSettingTemp);
-
-    // lv_group_add_obj(groupAbout, ui_PanelAboutInfo);
-
-    // lv_group_add_obj(groupBluetoothApp, ui_PanelBluetoothAppScreen);
-    // lv_group_add_obj(groupUserInstructions, ui_PanelUserInstruction);
 
     lv_group_add_obj(groupError, ui_PanelERR1);
     lv_group_add_obj(groupError, ui_PanelERR2);

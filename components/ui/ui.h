@@ -191,6 +191,10 @@ void ui_event_PanelModes(lv_event_t * e);
 extern lv_obj_t * ui_PanelModes;
 extern lv_obj_t * ui_IconModes;
 extern lv_obj_t * ui_LabelModes;
+void ui_event_PanelHeatingPower(lv_event_t * e);
+extern lv_obj_t * ui_PanelHeatingPower;
+extern lv_obj_t * ui_IconHeatingPower;
+extern lv_obj_t * ui_LabelHeatingPower;
 void ui_event_PanelTempUnit(lv_event_t * e);
 extern lv_obj_t * ui_PanelTempUnit;
 extern lv_obj_t * ui_IconTempUnit;
@@ -250,6 +254,33 @@ extern lv_obj_t * ui_PanelDeodorize;
 extern lv_obj_t * ui_IconDeodorize;
 extern lv_obj_t * ui_LabelDeodorize;
 // CUSTOM VARIABLES
+
+// SCREEN: ui_HeatingPower
+void ui_HeatingPower_screen_init(void);
+void ui_event_HeatingPower(lv_event_t * e);
+extern lv_obj_t * ui_HeatingPower;
+void ui_event_PanelHeatingPowerLvl1(lv_event_t * e);
+extern lv_obj_t * ui_PanelHeatingPowerLvl1;
+extern lv_obj_t * ui_LabelHeatingPower1;
+extern lv_obj_t * ui_LabelHeatingPowerLevel1;
+void ui_event_PanelHeatingPowerLvl2(lv_event_t * e);
+extern lv_obj_t * ui_PanelHeatingPowerLvl2;
+extern lv_obj_t * ui_LabelHeatingPower2;
+extern lv_obj_t * ui_LabelHeatingPowerLevel2;
+void ui_event_PanelHeatingPowerLvl3(lv_event_t * e);
+extern lv_obj_t * ui_PanelHeatingPowerLvl3;
+extern lv_obj_t * ui_LabelHeatingPower3;
+extern lv_obj_t * ui_LabelHeatingPowerLevel3;
+void ui_event_PanelHeatingPowerLvl4(lv_event_t * e);
+extern lv_obj_t * ui_PanelHeatingPowerLvl4;
+extern lv_obj_t * ui_LabelHeatingPower4;
+extern lv_obj_t * ui_LabelHeatingPowerLevel4;
+void ui_event_PanelHeatingPowerLvl5(lv_event_t * e);
+extern lv_obj_t * ui_PanelHeatingPowerLvl5;
+extern lv_obj_t * ui_LabelHeatingPower5;
+extern lv_obj_t * ui_LabelHeatingPowerLevel5;
+// CUSTOM VARIABLES
+
 
 // SCREEN: ui_TempUnitSetting
 void ui_TempUnitSetting_screen_init(void);
@@ -420,6 +451,7 @@ LV_IMG_DECLARE(ui_img_battery_png);    // assets/battery.png
 LV_IMG_DECLARE(ui_img_bat_bar_png);    // assets/bat_bar.png
 LV_IMG_DECLARE(ui_img_charging_png);    // assets/charging.png
 LV_IMG_DECLARE(ui_img_heatmodes_png);    // assets/heatmodes.png
+LV_IMG_DECLARE(ui_img_heating_pwr_png);    // assets/heating_pwr.png
 LV_IMG_DECLARE(ui_img_temp_unit_png);    // assets/temp_unit.png
 LV_IMG_DECLARE(ui_img_bottlesmall_png);    // assets/bottleSmall.png
 LV_IMG_DECLARE(ui_img_keeping_warm_png);    // assets/keeping_warm.png

@@ -12,7 +12,7 @@ zh-SG:
   E-3-Message: 加热时间过长。请检查你奶瓶是否过大容量。
   E-4-Message: '请检查奶瓶是否有过多冰块。如果问题持续, 请联系售后客服。'
   E-5-Message: 温度感应故障。请联系售后客服
-  E-7-Message: 请检查瓶盖密封性。如果问题持续, 请联系售后客服。
+  E-7-Message: '请检查瓶盖密封性。如果问题持续, 请联系售后客服。'
   BatteryLow: 低电量。请充电
   E-8-Message: 加热温度已经达标
   BreastMilk: 母乳
@@ -53,3 +53,4 @@ zh-SG:
   MeasuredTemperature: 测量温度
   AvoidLeaking: 防漏奶
   LanguageSetReboot: 语言设置。\n重启中。。。
+  HeatingPower: 加热功率

@@ -49,6 +49,41 @@ void ui_Menu_screen_init(void)
     lv_obj_set_style_text_align(ui_LabelModes, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_LabelModes, &ui_font_WIGG_B20, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    ui_PanelHeatingPower = lv_obj_create(ui_Menu);
+    lv_obj_set_width(ui_PanelHeatingPower, 240);
+    lv_obj_set_height(ui_PanelHeatingPower, 240);
+    lv_obj_set_x(ui_PanelHeatingPower, 4);
+    lv_obj_set_y(ui_PanelHeatingPower, 0);
+    lv_obj_set_align(ui_PanelHeatingPower, LV_ALIGN_CENTER);
+    lv_obj_remove_flag(ui_PanelHeatingPower,
+                       LV_OBJ_FLAG_SCROLLABLE | LV_OBJ_FLAG_SCROLL_ELASTIC | LV_OBJ_FLAG_SCROLL_MOMENTUM |
+                       LV_OBJ_FLAG_SCROLL_CHAIN);     /// Flags
+    lv_obj_set_style_bg_color(ui_PanelHeatingPower, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_PanelHeatingPower, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_side(ui_PanelHeatingPower, LV_BORDER_SIDE_NONE, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_IconHeatingPower = lv_image_create(ui_PanelHeatingPower);
+    lv_image_set_src(ui_IconHeatingPower, &ui_img_heating_pwr_png);
+    lv_obj_set_width(ui_IconHeatingPower, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_IconHeatingPower, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_IconHeatingPower, 1);
+    lv_obj_set_y(ui_IconHeatingPower, -18);
+    lv_obj_set_align(ui_IconHeatingPower, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_IconHeatingPower, LV_OBJ_FLAG_CLICKABLE);     /// Flags
+    lv_obj_remove_flag(ui_IconHeatingPower, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+
+    ui_LabelHeatingPower = lv_label_create(ui_PanelHeatingPower);
+    lv_obj_set_width(ui_LabelHeatingPower, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_LabelHeatingPower, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_LabelHeatingPower, 0);
+    lv_obj_set_y(ui_LabelHeatingPower, 80);
+    lv_obj_set_align(ui_LabelHeatingPower, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_LabelHeatingPower, _("HeatingPower"));
+    lv_obj_set_style_text_color(ui_LabelHeatingPower, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_LabelHeatingPower, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui_LabelHeatingPower, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_LabelHeatingPower, &ui_font_WIGG_B20, LV_PART_MAIN | LV_STATE_DEFAULT);
+
     ui_PanelTempUnit = lv_obj_create(ui_Menu);
     lv_obj_set_width(ui_PanelTempUnit, 240);
     lv_obj_set_height(ui_PanelTempUnit, 240);
@@ -329,6 +364,7 @@ void ui_Menu_screen_init(void)
     lv_obj_set_style_text_font(ui_LabelAbout, &ui_font_WIGG_B20, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     lv_obj_add_event_cb(ui_PanelModes, ui_event_PanelModes, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_PanelHeatingPower, ui_event_PanelHeatingPower, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_PanelTempUnit, ui_event_PanelTempUnit, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_PanelBottleSize, ui_event_PanelBottleSize, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_PanelKeepWarm, ui_event_PanelKeepWarm, LV_EVENT_ALL, NULL);
