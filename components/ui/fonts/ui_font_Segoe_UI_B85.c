@@ -1,9 +1,3 @@
-/*******************************************************************************
- * Size: 85 px
- * Bpp: 4
- * Opts: --bpp 4 --size 85 --font D:/Works/Upwork/Warmer New/Squareline UI-20-30/assets/segoe-ui-bold.ttf -o D:/Works/Upwork/Warmer New/Squareline UI-20-30/assets\ui_font_Segoe_UI_B85.c --format lvgl -r 0x30-0x39 -r 0x2E --no-compress --no-prefilter
- ******************************************************************************/
-
 #include "../ui.h"
 
 #ifndef UI_FONT_SEGOE_UI_B85

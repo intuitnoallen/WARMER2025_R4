@@ -44,7 +44,7 @@ zh-SG:
   FWUpgradeCaution: 请不要关闭温奶机\n或\n断开蓝牙
   FirmwareUpdated: 程序更新完毕
   Rebooting: 重启中。。。
-  UpdateFailed: 更新不成功
+  UpdateFailed: 更新不成功。\n请重试。
   PowerOffInfo: 继续按\n直至关闭
   OKtoConfirm: 按 OK 键确认
   Celsius: 摄氏度

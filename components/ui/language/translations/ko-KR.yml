@@ -44,7 +44,7 @@ ko-KR:
   FWUpgradeCaution: 병 보온기를 끄거나 블루투스\n연결을 끊지 마십시오.
   FirmwareUpdated: 프로그램 업데이트 완료
   Rebooting: 재부팅 중...
-  UpdateFailed: 업데이트 실패
+  UpdateFailed: 업데이트 실패.\n다시 시도해 주세요.
   PowerOffInfo: 닫힐 때까지 \n계속 누르세요.
   OKtoConfirm: 확인 버튼을 눌러 확인하세요
   Celsius: 섭씨

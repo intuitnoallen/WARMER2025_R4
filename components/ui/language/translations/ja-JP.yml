@@ -44,7 +44,7 @@ ja-JP:
   FWUpgradeCaution: 電源をオフに、\nBluetoothを切断し\nないでください。
   FirmwareUpdated: プログラム\nアップデート完了
   Rebooting: 再起動中。。。
-  UpdateFailed: 更新に\n失敗しました
+  UpdateFailed: 更新に失敗しました。\nもう一度お試しください。
   PowerOffInfo: 閉じるまで押し\n続けてください。
   OKtoConfirm: OK を押して確定
   Celsius: 摂氏度

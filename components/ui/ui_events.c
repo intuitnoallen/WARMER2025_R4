@@ -24,9 +24,11 @@ static void async_refresh_cb(void * user_data)
     case UI_UPDATE_BLE_STATUS:
         if (msg->value){
             lv_obj_set_style_image_recolor(ui_BLEicon, lv_color_hex(0x1945F2), LV_PART_MAIN | LV_STATE_DEFAULT);
+			lv_obj_set_style_image_recolor(ui_BLEiconOTA, lv_color_hex(0x1945F2), LV_PART_MAIN | LV_STATE_DEFAULT);
 		}
         else{
             lv_obj_set_style_image_recolor(ui_BLEicon, lv_color_hex(0x909090), LV_PART_MAIN | LV_STATE_DEFAULT);
+			lv_obj_set_style_image_recolor(ui_BLEiconOTA, lv_color_hex(0x909090), LV_PART_MAIN | LV_STATE_DEFAULT);
 		}
         break;
 	

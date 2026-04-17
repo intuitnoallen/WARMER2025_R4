@@ -138,6 +138,7 @@ void ui_OTA_screen_init(void);
 void ui_event_OTA(lv_event_t * e);
 lv_obj_t * ui_OTA;
 lv_obj_t * ui_PanelOTAProgress;
+lv_obj_t * ui_BLEiconOTA;
 lv_obj_t * ui_LabelFWProgress;
 lv_obj_t * ui_FirmwareUpdateBar;
 lv_obj_t * ui_LabelFWUpdateInfo;

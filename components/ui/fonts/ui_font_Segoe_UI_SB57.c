@@ -1,9 +1,3 @@
-/*******************************************************************************
- * Size: 57 px
- * Bpp: 4
- * Opts: --bpp 4 --size 57 --font D:/Works/Upwork/Warmer New/SquareLine UI-1-10/assets/Segoe UI Semibold.ttf -o D:/Works/Upwork/Warmer New/SquareLine UI-1-10/assets\ui_font_Segoe_UI_SB57.c --format lvgl -r 0x30-0x39 -r 0x2E -r 0x25 -r 0x41-0x5A --no-compress --no-prefilter
- ******************************************************************************/
-
 #include "../ui.h"
 
 #ifndef UI_FONT_SEGOE_UI_SB57

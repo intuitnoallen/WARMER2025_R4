@@ -1,12 +1,3 @@
-/*******************************************************************************
- * Size: 35 px
- * Bpp: 4
- * Opts: --bpp 4 --size 35 --font D:/Works/Upwork/Warmer New/Squareline UI-10-20/assets/WIGG-Bold-All-Refined.ttf -o D:/Works/Upwork/Warmer New/Squareline UI-10-20/assets\ui_font_WIGG_B35.c --format lvgl -r 0x41-0x5A -r 0x2D -r 0x30-0x39 --symbols %
-日語
-한국어
-中文 --no-compress --no-prefilter
- ******************************************************************************/
-
 #include "../ui.h"
 
 #ifndef UI_FONT_WIGG_B35

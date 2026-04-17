@@ -6,6 +6,7 @@
 
 #include "app_ble_ota.h"
 #include "ui_common.h"
+#include "esp_timer.h"
 
 #define OTA_RINGBUF_SIZE                    8192
 #define OTA_TASK_SIZE                       8192
@@ -14,6 +15,11 @@ static const char *TAG = "ESP_BLE_OTA";
 static esp_ota_handle_t out_handle;
 static RingbufHandle_t s_ringbuf = NULL;
 SemaphoreHandle_t notify_sem;
+volatile bool is_timeout_detected = false;
+
+esp_timer_handle_t ota_timeout_timer;
+bool timer_created = false;
+void ota_timeout_callback(void* arg);
 
 #if CONFIG_USE_PRE_ENC_OTA
 extern const char rsa_private_pem_start[] asm("_binary_private_pem_start");
@@ -260,6 +266,7 @@ void ota_task(void *arg)
     ESP_LOGI(TAG, "ota_task start");
 
     notify_sem = xSemaphoreCreateCounting(100, 0);
+    vTaskDelay(5);
     xSemaphoreGive(notify_sem);
 
 #ifdef CONFIG_USE_DELTA_OTA
@@ -302,6 +309,7 @@ void ota_task(void *arg)
     }
 #else
     partition_ptr = (esp_partition_t *)esp_ota_get_boot_partition();
+    vTaskDelay(5);
     if (partition_ptr == NULL) {
         ESP_LOGE(TAG, "boot partition NULL!\r\n");
         goto OTA_ERROR;
@@ -328,8 +336,9 @@ void ota_task(void *arg)
         ESP_LOGE(TAG, "partition NULL!\r\n");
         goto OTA_ERROR;
     }
-
+    vTaskDelay(5);
     memcpy(&partition, partition_ptr, sizeof(esp_partition_t));
+    vTaskDelay(5);
     if (esp_ota_begin(&partition, OTA_SIZE_UNKNOWN, &out_handle) != ESP_OK) {
         ESP_LOGE(TAG, "esp_ota_begin failed!\r\n");
         goto OTA_ERROR;
@@ -338,10 +347,28 @@ void ota_task(void *arg)
     ESP_LOGI(TAG, "wait for data from ringbuf! fw_len = %u", esp_ble_ota_get_fw_length());
     ui_post_update(UI_UPDATE_BLE_OTA,1);
     isOTAupgradingStarted = true;
+    
+    ESP_LOGI(TAG, "ota_start_timeout_cb");
+    if (!timer_created) {
+        const esp_timer_create_args_t timeout_args = {
+            .callback = &ota_timeout_callback,
+            .name = "ota_timeout"
+        };
+        esp_timer_create(&timeout_args, &ota_timeout_timer);
+        timer_created = true;
+    }
+    // Start/restart timer 
+    esp_timer_start_once(ota_timeout_timer, 30000000);
+
     /*deal with all receive packet*/
     for (;;) {
         // PRINT_STACK_USAGE (6000);
         data = (uint8_t *)xRingbufferReceive(s_ringbuf, &item_size, (TickType_t)portMAX_DELAY);
+        
+        if (is_timeout_detected) {
+        // if (data) vRingbufferReturnItem(s_ringbuf, (void *)data);
+        goto OTA_ERROR;
+        }
 
         xSemaphoreTake(notify_sem, portMAX_DELAY);
 
@@ -371,6 +398,11 @@ void ota_task(void *arg)
         uint32_t percent = ((recv_len + item_size) * 100) / esp_ble_ota_get_fw_length();
         if (percent > 100) percent = 100;  // Clamp to 100%
         lv_bar_set_value(ui_FirmwareUpdateBar, percent, LV_ANIM_OFF);
+
+        if (timer_created) {
+        esp_timer_stop(ota_timeout_timer);
+        esp_timer_start_once(ota_timeout_timer, 30000000);
+        }
 
         if (item_size != 0) {
 #ifdef CONFIG_USE_DELTA_OTA
@@ -429,6 +461,7 @@ void ota_task(void *arg)
     esp_restart();
 
 OTA_ERROR:
+    vTaskDelay(pdMS_TO_TICKS(500));
     ESP_LOGE(TAG, "OTA failed");
     ui_post_update(UI_UPDATE_BLE_OTA,3);
     vTaskDelay(pdMS_TO_TICKS(1000)); 
@@ -439,6 +472,16 @@ void
 ota_recv_fw_cb(uint8_t *buf, uint32_t length)
 {
     write_to_ringbuf(buf, length);
+}
+
+void ota_timeout_callback(void* arg) {
+    timer_created=false;
+    esp_timer_stop(ota_timeout_timer);
+    is_timeout_detected = true;
+    ESP_LOGI(TAG, "OTA Timeout");
+
+    uint8_t dummy_byte = 0xFF;
+    xRingbufferSend(s_ringbuf, &dummy_byte, 1, 0);
 }
 
 void ota_task_init(void)

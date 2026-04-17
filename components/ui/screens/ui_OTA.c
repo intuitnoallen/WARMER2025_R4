@@ -28,11 +28,24 @@ void ui_OTA_screen_init(void)
     lv_obj_set_style_bg_opa(ui_PanelOTAProgress, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_side(ui_PanelOTAProgress, LV_BORDER_SIDE_NONE, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    ui_BLEiconOTA = lv_image_create(ui_PanelOTAProgress);
+    lv_image_set_src(ui_BLEiconOTA, &ui_img_ble_png);
+    lv_obj_set_width(ui_BLEiconOTA, LV_SIZE_CONTENT);   /// 38
+    lv_obj_set_height(ui_BLEiconOTA, LV_SIZE_CONTENT);    /// 23
+    lv_obj_set_x(ui_BLEiconOTA, 0);
+    lv_obj_set_y(ui_BLEiconOTA, -93);
+    lv_obj_set_align(ui_BLEiconOTA, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_BLEiconOTA, LV_OBJ_FLAG_CLICKABLE);     /// Flags
+    lv_obj_remove_flag(ui_BLEiconOTA, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_image_recolor(ui_BLEiconOTA, lv_color_hex(0x909090), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_image_recolor_opa(ui_BLEiconOTA, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+
     ui_LabelFWProgress = lv_label_create(ui_PanelOTAProgress);
     lv_obj_set_width(ui_LabelFWProgress, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_LabelFWProgress, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_LabelFWProgress, 2);
-    lv_obj_set_y(ui_LabelFWProgress, -57);
+    lv_obj_set_y(ui_LabelFWProgress, -50);
     lv_obj_set_align(ui_LabelFWProgress, LV_ALIGN_CENTER);
     lv_label_set_text(ui_LabelFWProgress, _("FWUpdateProgress"));
     lv_obj_set_style_text_color(ui_LabelFWProgress, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -63,7 +76,7 @@ void ui_OTA_screen_init(void)
     lv_obj_set_width(ui_LabelFWUpdateInfo, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_LabelFWUpdateInfo, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_LabelFWUpdateInfo, 2);
-    lv_obj_set_y(ui_LabelFWUpdateInfo, 70);
+    lv_obj_set_y(ui_LabelFWUpdateInfo, 68);
     lv_obj_set_align(ui_LabelFWUpdateInfo, LV_ALIGN_CENTER);
     lv_label_set_text(ui_LabelFWUpdateInfo, _("FWUpgradeCaution"));
     lv_obj_set_style_text_color(ui_LabelFWUpdateInfo, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -137,7 +150,7 @@ void ui_OTA_screen_init(void)
     lv_obj_set_width(ui_LabelFWFailed, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_LabelFWFailed, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_LabelFWFailed, 0);
-    lv_obj_set_y(ui_LabelFWFailed, 56);
+    lv_obj_set_y(ui_LabelFWFailed, 47);
     lv_obj_set_align(ui_LabelFWFailed, LV_ALIGN_CENTER);
     lv_label_set_text(ui_LabelFWFailed, _("UpdateFailed"));
     lv_obj_set_style_text_color(ui_LabelFWFailed, lv_color_hex(0xF70808), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -150,7 +163,7 @@ void ui_OTA_screen_init(void)
     lv_obj_set_width(ui_IconFWUpdateFailed, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_IconFWUpdateFailed, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_IconFWUpdateFailed, 0);
-    lv_obj_set_y(ui_IconFWUpdateFailed, -25);
+    lv_obj_set_y(ui_IconFWUpdateFailed, -42);
     lv_obj_set_align(ui_IconFWUpdateFailed, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_IconFWUpdateFailed, LV_OBJ_FLAG_CLICKABLE);     /// Flags
     lv_obj_remove_flag(ui_IconFWUpdateFailed, LV_OBJ_FLAG_SCROLLABLE);      /// Flags

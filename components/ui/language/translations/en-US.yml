@@ -50,7 +50,7 @@ en-US:
   FWUpgradeCaution: Do Not Power OFF \nor Disconnect\nBluetooth
   FirmwareUpdated: Firmware Updated
   Rebooting: Rebooting...
-  UpdateFailed: Update Failed
+  UpdateFailed: Update Failed.\nPlease try again.
   PowerOffInfo: Keep holding to \nPOWER OFF
   OKtoConfirm: Press OK to confirm
   Celsius: Celsius
