@@ -77,7 +77,7 @@
 #define WARMER_BLE_PERIOD                       800
 
 /** @brief  Period in milliseconds for temperature errors triggers */
-#define WARMER_NTC_ERR_TIMER                   1000
+#define WARMER_NTC_ERR_TIMER                   5000
 
 /** @brief  Interval (milliseconds) heatind and warming  */
 #define WARMER_HEATING_MILK                     (9 * 1000)//(3 * 1000)

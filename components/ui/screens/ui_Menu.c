@@ -374,5 +374,6 @@ void ui_Menu_screen_init(void)
     lv_obj_add_event_cb(ui_PanelInstructions, ui_event_PanelInstructions, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_PanelAbout, ui_event_PanelAbout, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Menu, ui_event_Menu, LV_EVENT_ALL, NULL);
+    
 
 }

@@ -1224,10 +1224,10 @@ void ui_init(void)
     ui_Error_screen_init();
     ui_Done_screen_init();
     ui_ThermometerReading_screen_init();
-    ui_Menu_screen_init();
     ui_Selected_screen_init();
     ui_Warming_screen_init();
     ui_OTA_screen_init();
+    // ui_Menu_screen_init();
     // ui_Language_screen_init();
     // ui_HeatingModes_screen_init();
     // ui_HeatingPower_screen_init();

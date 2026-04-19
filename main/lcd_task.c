@@ -837,17 +837,6 @@ void lcd_init(void)
 
     lv_group_add_obj(groupWarming, ui_PanelWarming);
 
-    lv_group_add_obj(groupMenu, ui_PanelModes);
-    lv_group_add_obj(groupMenu, ui_PanelHeatingPower);   
-    lv_group_add_obj(groupMenu, ui_PanelTempUnit);
-    lv_group_add_obj(groupMenu, ui_PanelBottleSize);
-    lv_group_add_obj(groupMenu, ui_PanelKeepWarm);
-    lv_group_add_obj(groupMenu, ui_PanelNotification);
-    lv_group_add_obj(groupMenu, ui_PanelLanguage);
-    lv_group_add_obj(groupMenu, ui_PanelBluetoothApp);
-    lv_group_add_obj(groupMenu, ui_PanelInstructions);
-    lv_group_add_obj(groupMenu, ui_PanelAbout);
-           
     lv_group_add_obj(groupOTAupdate, ui_PanelOTAProgress);
     lv_group_add_obj(groupOTAupdate, ui_PanelOTAUpdated);
     lv_group_add_obj(groupOTAupdate, ui_PanelOTAFailed);

@@ -178,7 +178,7 @@ void updateThermometerTemp(){
 void ThermometerReadingGroupUpdate(lv_event_t * e)
 {
        
-	   lv_indev_set_group(indev, groupThermometerReading);
+	lv_indev_set_group(indev, groupThermometerReading);
 	
 	lv_obj_scroll_to_view(ui_PanelTempMeasured, LV_ANIM_OFF);
 	lv_group_set_focus_cb(groupThermometerReading, my_focus_cb);
@@ -659,6 +659,9 @@ void ToMainScreenNoAnim(lv_event_t * e)
 
 void ToMenuScreen(lv_event_t * e)
 {
+	if(ui_Menu == NULL){
+		ui_Menu_screen_init();
+	}
 	_ui_screen_change(&ui_Menu, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_Menu_screen_init);//400
 	vTaskDelay(pdMS_TO_TICKS(20));
 }
@@ -666,6 +669,9 @@ void ToMenuScreen(lv_event_t * e)
 
 void ErrToMenu(lv_event_t * e)
 {
+	if(ui_Menu == NULL){
+		ui_Menu_screen_init();
+	}
 	   isErrorUpdateRequired = false;  //stop showing error (only screen update) if moving to menu screen from error screen 	
 	   _ui_screen_change(&ui_Menu, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_Menu_screen_init);//400
 	   vTaskDelay(pdMS_TO_TICKS(20));
@@ -687,6 +693,16 @@ void MainGroupUpdate(lv_event_t * e)
 
 void MenuGroupUpdate(lv_event_t * e)
 {
+	lv_group_add_obj(groupMenu, ui_PanelModes);
+    lv_group_add_obj(groupMenu, ui_PanelHeatingPower);   
+    lv_group_add_obj(groupMenu, ui_PanelTempUnit);
+    lv_group_add_obj(groupMenu, ui_PanelBottleSize);
+    lv_group_add_obj(groupMenu, ui_PanelKeepWarm);
+    lv_group_add_obj(groupMenu, ui_PanelNotification);
+    lv_group_add_obj(groupMenu, ui_PanelLanguage);
+    lv_group_add_obj(groupMenu, ui_PanelBluetoothApp);
+    lv_group_add_obj(groupMenu, ui_PanelInstructions);
+    lv_group_add_obj(groupMenu, ui_PanelAbout);
 	lv_indev_set_group(indev, groupMenu);
 	
 	// lv_obj_t * focused_obj = lv_group_get_focused(groupMenu);
